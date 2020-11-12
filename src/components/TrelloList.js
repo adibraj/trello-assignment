@@ -3,6 +3,7 @@ import TrelloCard from "./TrelloCard";
 import styled from "styled-components";
 import Icon from "@material-ui/core/Icon";
 import { connect } from "react-redux";
+import TrelloCreate from "../common/TrelloCreate";
 
 const ListContainer = styled.div`
   background-color: #dfe3e6;
@@ -52,6 +53,7 @@ const TrelloList = ({ title, cards, listID }) => {
           listID={listID}
         />
       ))}
+      <TrelloCreate listID={listID} />
     </ListContainer>
   );
 };

@@ -11,11 +11,17 @@ const ListsContainer = styled.div`
 class App extends Component {
   render() {
     const { lists } = this.props;
+    console.log(lists);
     return (
       <ListsContainer>
         {lists &&
           lists.map((list) => (
-            <TrelloList title={list.title} cards={list.cards} />
+            <TrelloList
+              title={list.title}
+              cards={list.cards}
+              key={list.id}
+              listID={list.id}
+            />
           ))}
       </ListsContainer>
     );
