@@ -44,7 +44,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - uuidv4 (Used to generate id for newly added cards)
 
 ## Project Structure
-
+<PRE>
 -- src
   -- common  
   -- modules
@@ -61,9 +61,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
        -- components
        -- reducers
   -- redux_setup
-
+</PRE>
 - common :- common components which can be reused across application.
 - Boards :- Future we can have multiple boards, so all boards related stuff goes inside Boards.
 - Cards :- All cards related stuff goes inside this package.
 - TrelloList :- Furture can have dynamic lists CURD operations can be added to each Swimlanes all logic realted to swimlanes goes inside this package.
 - redux_setup :- All redux realted stuff for creating rootReducer, store goes inside this package.
+
+## Live Example
+
+  - Following code in deployed in below url [https://trello-board-assign.herokuapp.com/](https://trello-board-assign.herokuapp.com/)
