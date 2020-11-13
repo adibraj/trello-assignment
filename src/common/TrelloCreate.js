@@ -2,23 +2,10 @@ import React from "react";
 import Icon from "@material-ui/core/Icon";
 import TrelloButton from "./TrelloButton";
 import { connect } from "react-redux";
-import { addCard } from "../actions";
+import { addList, addCard } from "../redux_setup/actions";
 import styled from "styled-components";
 import TrelloForm from "./TrelloForm";
 import TrelloOpenForm from "./TrelloOpenForm";
-
-const OpenFormButton = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 3px;
-  height: 36px;
-  margin-left: 8px;
-  width: 300px;
-  padding-left: 10px;
-  padding-right: 10px;
-  opacity: 0.5;
-`;
 
 class TrelloCreate extends React.PureComponent {
   state = {
@@ -44,10 +31,24 @@ class TrelloCreate extends React.PureComponent {
     });
   };
 
+  handleAddList = () => {
+    const { dispatch } = this.props;
+    const { text } = this.state;
+
+    if (text) {
+      this.setState({
+        text: "",
+      });
+      dispatch(addList(text));
+    }
+
+    return;
+  };
+
   handleAddCard = () => {
     const { dispatch, listID } = this.props;
     const { text } = this.state;
-    console.log(listID);
+
     if (text) {
       this.setState({
         text: "",
@@ -59,7 +60,25 @@ class TrelloCreate extends React.PureComponent {
   renderOpenForm = () => {
     const { list } = this.props;
 
-    const buttonText = "Add another card";
+    const buttonText = list ? "Add another list" : "Add another card";
+    const buttonTextOpacity = list ? 1 : 0.5;
+    const buttonTextColor = list ? "white" : "inherit";
+    const buttonTextBackground = list ? "rgba(0,0,0,.15)" : "inherit";
+
+    const OpenFormButton = styled.div`
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 3px;
+      height: 36px;
+      margin-left: 8px;
+      width: 300px;
+      padding-left: 10px;
+      padding-right: 10px;
+      opacity: ${buttonTextOpacity};
+      color: ${buttonTextColor};
+      background-color: ${buttonTextBackground};
+    `;
 
     return (
       <OpenFormButton onClick={this.openForm}>
@@ -79,12 +98,12 @@ class TrelloCreate extends React.PureComponent {
         closeForm={this.closeForm}
       >
         <TrelloButton onClick={list ? this.handleAddList : this.handleAddCard}>
-          {"Add Card"}
+          {list ? "Add List" : "Add Card"}
         </TrelloButton>
       </TrelloForm>
     ) : (
       <TrelloOpenForm list={list} onClick={this.openForm}>
-        {"Add another card"}
+        {list ? "Add another list" : "Add another card"}
       </TrelloOpenForm>
     );
   }

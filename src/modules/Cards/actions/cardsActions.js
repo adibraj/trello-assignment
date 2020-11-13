@@ -1,8 +1,8 @@
-import { CONSTANTS } from "../actions";
+import { CONSTANTS } from "../../../redux_setup/actions";
 import uuid from "uuidv4";
 
 export const addCard = (listID, text) => {
-  const id = "1"; //uuid();
+  const id = uuid();
   return {
     type: CONSTANTS.ADD_CARD,
     payload: { text, listID, id },
