@@ -46,21 +46,21 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ## Project Structure
 
 -- src
--- common  
- -- modules
--- Boards
--- actions
--- components
--- reducers  
- -- Cards
--- actions
--- components
--- reducers
--- TrelloList
--- actions
--- components
--- reducers
--- redux_setup
+  -- common  
+  -- modules
+     -- Boards
+       -- actions
+       -- components
+       -- reducers  
+    -- Cards
+       -- actions
+       -- components
+       -- reducers
+    -- TrelloList
+       -- actions
+       -- components
+       -- reducers
+  -- redux_setup
 
 - common :- common components which can be reused across application.
 - Boards :- Future we can have multiple boards, so all boards related stuff goes inside Boards.
